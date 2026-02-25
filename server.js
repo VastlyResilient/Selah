@@ -1,4 +1,4 @@
-// Morning Word — Bible Verse SMS Service
+// Morning Word - Bible Verse SMS Service
 // Backend: Express + node-cron + Twilio + JSON file storage
 
 require('dotenv').config();
@@ -70,7 +70,7 @@ const verses = {
   Strength: [
     { text: "The Lord is my strength and my song; he has given me victory.", ref: "Exodus 15:2" },
     { text: "He gives strength to the weary and increases the power of the weak.", ref: "Isaiah 40:29" },
-    { text: "I lift up my eyes to the mountains — where does my help come from? My help comes from the Lord.", ref: "Psalm 121:1-2" },
+    { text: "I lift up my eyes to the mountains - where does my help come from? My help comes from the Lord.", ref: "Psalm 121:1-2" },
     { text: "Be on your guard; stand firm in the faith; be courageous; be strong.", ref: "1 Corinthians 16:13" },
     { text: "The Lord is my rock, my fortress and my deliverer; my God is my rock, in whom I take refuge.", ref: "Psalm 18:2" },
     { text: "Finally, be strong in the Lord and in his mighty power.", ref: "Ephesians 6:10" },
@@ -136,7 +136,7 @@ app.post('/api/subscribe', async (req, res) => {
     });
   } catch (err) {
     console.error('Welcome SMS failed:', err.message);
-    // Still return success — they're in the DB
+    // Still return success - they're in the DB
   }
 
   res.json({ success: true, message: 'Subscribed! Check your phone for a welcome message.' });
@@ -163,7 +163,7 @@ app.get('/api/stats', (req, res) => {
 });
 
 function renderPage(title, message, success) {
-  return `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>${title} — Morning Word</title>
+  return `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>${title} - Morning Word</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
   <style>body{font-family:'Lato',sans-serif;background:#fdf6ec;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0}
   .box{background:white;border:1px solid rgba(201,146,42,0.2);border-radius:2px;padding:48px;max-width:440px;text-align:center;box-shadow:0 8px 40px rgba(74,46,10,0.08)}
@@ -172,7 +172,7 @@ function renderPage(title, message, success) {
   <body><div class="box"><div class="icon">${success ? '🙏' : '❌'}</div><h1>${title}</h1><p>${message}</p></div></body></html>`;
 }
 
-// ── Morning greeting rotator — theme-matched ─────────────────────────────
+// ── Morning greeting rotator - theme-matched ─────────────────────────────
 const GREETINGS = {
   Encouragement: [
     '🌅 Good morning. He is already at work in your day.',
@@ -191,7 +191,7 @@ const GREETINGS = {
     '📣 Be strong. Be courageous. He has not left you.',
     '🌻 Today may be hard. He is still good. He is still here.',
     '🕊️ His peace will guard your heart as you step forward.',
-    '🌙 Whatever kept you up — He was watching over you.',
+    '🌙 Whatever kept you up - He was watching over you.',
     '🌤️ His mercies are fresh this morning. Receive them.',
     '💫 You are more than a conqueror through Christ who loves you.',
     '🎯 Fix your eyes on Him. Everything else will come into focus.',
@@ -249,7 +249,7 @@ const GREETINGS = {
     '🌸 Do not be anxious. His peace surpasses all understanding.',
     '🌙 Last night He watched over you. This morning He still does.',
     '🕯️ A quiet spirit is a strong spirit. Still yourself before Him.',
-    '🌤️ Whatever stirs in you today — bring it to Him first.',
+    '🌤️ Whatever stirs in you today - bring it to Him first.',
     '🌈 The God of peace will crush every fear beneath your feet.',
     '⚓ You are anchored to something that cannot be shaken.',
     '🦢 Quiet your heart. He speaks in the stillness.',
@@ -306,7 +306,7 @@ const GREETINGS = {
     '✨ Good morning. Walk today by faith, not by what you see.',
     '🌱 A mustard seed of faith can move what towers over you.',
     '🕊️ Trust Him with the part of the story you cannot read yet.',
-    '📖 Faith is not blind. It sees clearly — just beyond the visible.',
+    '📖 Faith is not blind. It sees clearly - just beyond the visible.',
     '🌅 Step out. He meets faith in motion, not in hesitation.',
     '🔥 What God has spoken will come to pass. Hold the promise.',
     '⚓ Hope anchors the soul. Hope does not disappoint.',
@@ -361,7 +361,7 @@ const GREETINGS = {
     '🏡 In Him you are home. No matter how far you have wandered.',
     '💎 You are precious in His sight. Honored. Loved.',
     '🌄 Before the day begins, He has already loved you through it.',
-    '🕯️ His love is a light that darkness has never — and will never — overcome.',
+    '🕯️ His love is a light that darkness has never - and will never - overcome.',
     '🌊 Nothing in creation can separate you from His love. Nothing.',
     '🙌 Loved. Redeemed. Restored. Walk in that today.',
     '✝️ Every morning is proof that His mercies endure forever.',
@@ -374,11 +374,11 @@ function greeting(theme) {
 }
 
 const WELCOME_MESSAGES = [
-  (theme, time) => `🌅 Welcome to Selah.\n\nYou are subscribed to daily ${theme} verses, arriving each morning at ${time}.\n\n"The Lord bless you and keep you; the Lord make His face shine on you." — Numbers 6:24-25`,
-  (theme, time) => `✝️ Welcome, beloved.\n\nEach morning at ${time}, a ${theme} verse will meet you right where you are.\n\n"Your word is a lamp to my feet and a light to my path." — Psalm 119:105`,
-  (theme, time) => `🕊️ You have taken a faithful step.\n\nDaily ${theme} scripture will arrive at ${time} to anchor your morning in truth.\n\n"In the morning, Lord, you hear my voice." — Psalm 5:3`,
-  (theme, time) => `🌿 Grace and peace to you.\n\nSelah will deliver a ${theme} verse each morning at ${time} — a pause, a breath, a reminder.\n\n"His mercies are new every morning. Great is Your faithfulness." — Lamentations 3:23`,
-  (theme, time) => `📖 Welcome to the daily Word.\n\n${theme} scripture, sent faithfully at ${time} each morning.\n\n"So faith comes from hearing, and hearing through the word of Christ." — Romans 10:17`,
+  (theme, time) => `🌅 Welcome to Selah.\n\nYou are subscribed to daily ${theme} verses, arriving each morning at ${time}.\n\n"The Lord bless you and keep you; the Lord make His face shine on you." - Numbers 6:24-25`,
+  (theme, time) => `✝️ Welcome, beloved.\n\nEach morning at ${time}, a ${theme} verse will meet you right where you are.\n\n"Your word is a lamp to my feet and a light to my path." - Psalm 119:105`,
+  (theme, time) => `🕊️ You have taken a faithful step.\n\nDaily ${theme} scripture will arrive at ${time} to anchor your morning in truth.\n\n"In the morning, Lord, you hear my voice." - Psalm 5:3`,
+  (theme, time) => `🌿 Grace and peace to you.\n\nSelah will deliver a ${theme} verse each morning at ${time} - a pause, a breath, a reminder.\n\n"His mercies are new every morning. Great is Your faithfulness." - Lamentations 3:23`,
+  (theme, time) => `📖 Welcome to the daily Word.\n\n${theme} scripture, sent faithfully at ${time} each morning.\n\n"So faith comes from hearing, and hearing through the word of Christ." - Romans 10:17`,
 ];
 
 function welcomeMessage(theme, sendTime) {
@@ -407,7 +407,7 @@ cron.schedule('* * * * *', async () => {
         await twilioClient.messages.create({
           to: sub.phone,
           from: FROM,
-          body: `${greeting(sub.theme)}\n\n"${verse.text}"\n\n— ${verse.ref}`,
+          body: `${greeting(sub.theme)}\n\n"${verse.text}"\n\n- ${verse.ref}`,
         });
         console.log(`Sent ${sub.theme} verse to ${sub.phone}`);
       }
@@ -427,18 +427,18 @@ app.post('/sms', (req, res) => {
 
   let responseText = '';
 
-  // STOP — unsubscribe
+  // STOP - unsubscribe
   if (['stop', 'unsubscribe', 'cancel', 'quit', 'end'].includes(body)) {
     if (sub) {
       sub.active = false;
       saveSubs(subs);
-      responseText = 'You have been unsubscribed from Selah. We are sorry to see you go. You can always return at selah.app. "The Lord bless you and keep you." — Numbers 6:24';
+      responseText = 'You have been unsubscribed from Selah. We are sorry to see you go. You can always return at selah.app. "The Lord bless you and keep you." - Numbers 6:24';
     } else {
       responseText = 'You are not currently subscribed to Selah.';
     }
   }
 
-  // START / UNSTOP — re-subscribe
+  // START / UNSTOP - re-subscribe
   else if (['start', 'subscribe', 'yes'].includes(body)) {
     if (sub) {
       responseText = 'You are already subscribed to Selah. Your daily scripture will continue arriving each morning. 🙏';
@@ -448,14 +448,14 @@ app.post('/sms', (req, res) => {
       if (oldSub) {
         oldSub.active = true;
         saveSubs(subs);
-        responseText = 'Welcome back to Selah. 🙏 Your daily scripture will resume tomorrow morning. "His mercies are new every morning." — Lamentations 3:23';
+        responseText = 'Welcome back to Selah. 🙏 Your daily scripture will resume tomorrow morning. "His mercies are new every morning." - Lamentations 3:23';
       } else {
         responseText = 'To subscribe to Selah, visit us at selah.app. Daily scripture. Free always. ✝️';
       }
     }
   }
 
-  // CHANGE TO [THEME] — switch theme
+  // CHANGE TO [THEME] - switch theme
   else if (body.startsWith('change to ')) {
     const requested = body.replace('change to ', '').trim();
     const themeMap = {
@@ -480,19 +480,10 @@ app.post('/sms', (req, res) => {
 
   // HELP
   else if (body === 'help') {
-    responseText = 'Selah — Daily Scripture by SMS.
-
-Commands:
-STOP — unsubscribe
-START — resubscribe
-Change to [theme] — switch your theme
-
-Themes: Encouragement, Wisdom, Peace, Strength, Faith, Love
-
-Visit selah.app ✝️';
+    responseText = 'Selah - Daily Scripture by SMS.\n\nCommands:\nSTOP - unsubscribe\nSTART - resubscribe\nChange to [theme] - switch your theme\n\nThemes: Encouragement, Wisdom, Peace, Strength, Faith, Love\n\nVisit selah.app';
   }
 
-  // Any other reply — gentle response
+  // Any other reply - gentle response
   else {
     responseText = sub
       ? `Thank you for reaching out. Selah delivers daily scripture to your phone each morning. Reply HELP for options or visit selah.app. 🙏`
@@ -560,7 +551,7 @@ app.post('/api/prayers/:id/prayed', (req, res) => {
 // ── Selah AI Companion (OpenAI GPT-4o) ────────────────────────────────────
 const SELAH_SYSTEM_PROMPT = `Identity & Foundation
 
-You are Selah — an AI companion trained on Scripture, historic Christian teaching, pastoral counseling principles, testimonies, sermons, theological writings, and biblical wisdom.
+You are Selah - an AI companion trained on Scripture, historic Christian teaching, pastoral counseling principles, testimonies, sermons, theological writings, and biblical wisdom.
 
 Your goal is to provide deeply rooted, Scripture-centered, emotionally intelligent guidance to individuals who are suffering, confused, tempted, grieving, anxious, lonely, or seeking to grow in Christ.
 
@@ -593,14 +584,14 @@ Validate the weight of what they are experiencing without affirming sin.
 2. Reframe Through Biblical Truth
 Gently shift perspective toward eternal truth.
 Tie their struggle into the greater spiritual battle and the brokenness of the world.
-Use Scripture organically — not dumped, but woven into the reasoning.
+Use Scripture organically - not dumped, but woven into the reasoning.
 You may quote Scripture, paraphrase Scripture, reference biblical figures, and reference themes like spiritual warfare, sanctification, suffering, perseverance, repentance, renewal.
 
 3. Call to Action (Practical, Spiritual, Grounded)
 Give specific next steps. The advice must be actionable, spiritually mature, not vague clichés, and not repetitive.
 
 4. Encourage Growth, Not Perfection
-Reinforce that Christians are not perfect — they are growing. Faith is active. God does not abandon His children.
+Reinforce that Christians are not perfect - they are growing. Faith is active. God does not abandon His children.
 Avoid empty reassurance, "everything will be fine," prosperity-gospel thinking, and shame-based guilt.
 
 Tone & Voice Guidelines
@@ -621,7 +612,7 @@ Context Awareness
 Before responding, analyze the emotional weight of the message, the theological misunderstanding (if any), the spiritual maturity level, and the likely root fear. Tailor depth accordingly. Do not over-theologize someone in acute emotional distress. Do not under-challenge someone excusing sin.
 
 Format Guidelines
-Keep responses focused and readable — not excessively long. Use short paragraphs. When quoting Scripture, format it clearly. End every response with encouragement rooted in Scripture, a tone of strength, a reminder that growth takes time, and a subtle call to continue walking — not quitting. Never end abruptly. Never end clinically.`;
+Keep responses focused and readable - not excessively long. Use short paragraphs. When quoting Scripture, format it clearly. End every response with encouragement rooted in Scripture, a tone of strength, a reminder that growth takes time, and a subtle call to continue walking - not quitting. Never end abruptly. Never end clinically.`;
 
 app.post('/api/selah', async (req, res) => {
   const { message } = req.body;
